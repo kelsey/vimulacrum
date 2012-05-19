@@ -17,7 +17,7 @@
         set
         runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
       endif
-    } 
+    " }
 
     " Setup Bundle Support {
     " The next two lines ensure that the ~/.vim/bundle/ system works
