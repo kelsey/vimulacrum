@@ -20,13 +20,13 @@ echo "done!\n"
 
 printf "* Cloning the vimulacrum repository onto your machine..."
 git clone --recursive http://github.com/kelsey/vimulacrum.git $install_directory
-mkdir -p $install_directory/.vim/bundle
-ln -s $install_directory/.vimrc $HOME/.vimrc
-ln -s $install_directory/.vim $HOME/.vim
+mkdir -p $install_directory/vim/bundle
+ln -s $install_directory/vimrc $HOME/.vimrc
+ln -s $install_directory/vim $HOME/.vim
 echo "done!\n"
 
 printf "* Installing Vundle..."
-git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+git clone http://github.com/gmarik/vundle.git $HOME/vim/bundle/vundle
 echo "done!\n"
 
 printf "* Installing plugins using Vundle..."
