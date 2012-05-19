@@ -51,7 +51,7 @@
     " Extends % for HTML, LaTeX etc.
     Bundle 'matchit.zip'
     Bundle 'Lokaltog/vim-powerline'
-    Bundle 'Lokaltog/vim-easymotion'
+    ""Bundle 'Lokaltog/vim-easymotion'
     " Approximate colorschemes
     "Bundle 'godlygeek/csapprox'
     "Bundle 'jistr/vim-nerdtree-tabs'
