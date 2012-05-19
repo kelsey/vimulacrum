@@ -26,7 +26,7 @@ ln -s $install_directory/vim $HOME/.vim
 echo "done!\n"
 
 printf "* Installing Vundle..."
-git clone http://github.com/gmarik/vundle.git $HOME/vim/bundle/vundle
+git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 echo "done!\n"
 
 printf "* Installing plugins using Vundle..."
