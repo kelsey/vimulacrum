@@ -50,7 +50,7 @@
     "Bundle 'vim-scripts/sessionman.vim'
     " Extends % for HTML, LaTeX etc.
     Bundle 'matchit.zip'
-    Bundle 'Lokaltog/vim-powerline'
+    ""Bundle 'Lokaltog/vim-powerline'
     " Approximate colorschemes
     "Bundle 'godlygeek/csapprox'
     "Bundle 'jistr/vim-nerdtree-tabs'
@@ -66,7 +66,7 @@
     "Bundle 'scrooloose/nerdcommenter'
     Bundle 'godlygeek/tabular'
     Bundle 'majutsushi/tagbar'
-    ""Bundle 'Shougo/neocomplcache'
+    Bundle 'Shougo/neocomplcache'
 
     " PHP
     "Bundle 'spf13/PIV'
