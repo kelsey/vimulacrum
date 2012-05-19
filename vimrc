@@ -41,8 +41,6 @@
 
     " General
     Bundle 'scrooloose/nerdtree'
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'spf13/vim-colors'
     Bundle 'tpope/vim-surround'
     Bundle 'AutoClose'
     Bundle 'kien/ctrlp.vim'
@@ -54,6 +52,10 @@
     " Approximate colorschemes
     "Bundle 'godlygeek/csapprox'
     "Bundle 'jistr/vim-nerdtree-tabs'
+
+    " Colorschemes
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'spf13/vim-colors'
     Bundle 'flazz/vim-colorschemes'
 
     " General Programming
