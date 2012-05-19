@@ -557,7 +557,7 @@ map <silent> <C-n> :bn<CR>
 "map <silent> <C-p> :bp<CR>
 
 set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
+set fillchars+=stl:\ ,stlnc:\ 
 
 " Use local vimrc if available {
     if filereadable(expand("~/.vimrc.local"))
