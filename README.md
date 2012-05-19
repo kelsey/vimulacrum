@@ -16,3 +16,11 @@ TASK LIST:
 
 ### one-liner install script
 - `curl https://raw.github.com/kelsey/vimulacrum/master/install.sh -l -o - | bash`
+
+## Main plugins
+
+### [NERDTree]
+
+NERDTree is a file explorer plugin that provides "project drawer"
+functionality to your vim editing.  You can learn more about it with
+:help NERDTree
