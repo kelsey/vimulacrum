@@ -51,7 +51,6 @@
     " Extends % for HTML, LaTeX etc.
     Bundle 'matchit.zip'
     Bundle 'Lokaltog/vim-powerline'
-    ""Bundle 'Lokaltog/vim-easymotion'
     " Approximate colorschemes
     "Bundle 'godlygeek/csapprox'
     "Bundle 'jistr/vim-nerdtree-tabs'
@@ -70,14 +69,14 @@
     ""Bundle 'Shougo/neocomplcache'
 
     " PHP
-    Bundle 'spf13/PIV'
+    "Bundle 'spf13/PIV'
 
     " Python
     " Pick either python-mode or pyflakes & pydoc
-    Bundle 'klen/python-mode'
-    Bundle 'python.vim'
-    Bundle 'python_match.vim'
-    Bundle 'pythoncomplete'
+    "Bundle 'klen/python-mode'
+    "Bundle 'python.vim'
+    "Bundle 'python_match.vim'
+    "Bundle 'pythoncomplete'
 
     " Javascript
     Bundle 'leshill/vim-json'
