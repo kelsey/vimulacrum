@@ -98,6 +98,7 @@
     "Bundle 'vim-scripts/sudo.vim'
     "Bundle 'chrisbra/SudoEdit.vim'
 " }
+
 " General {
     set background=dark         " Assume a dark background
     if !has('gui')
@@ -118,7 +119,6 @@
     set spell                       " spell checking on
     set hidden                      " allow buffer switching without saving
 " }
-
 
 " Vim UI {
     color solarized                 " load a colorscheme
@@ -327,7 +327,7 @@
     " }
 
     " NerdTree {
-        map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         map <leader>e :NERDTreeFind<CR>
         nmap <leader>nt :NERDTreeFind<CR>
 
