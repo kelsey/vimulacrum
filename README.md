@@ -1,6 +1,7 @@
 vimulacrum
 ==========
 [vim-yuh-ley-kruhm]
+
 /ˌvɪmyəˈleɪkrəm/
 
 The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing it exists!
@@ -11,9 +12,21 @@ TASK LIST:
 * Make a list of wanted plugins
 
 
+## Supported systems
+- Works best with Vim 7.3
+
+### GNU/Linux
+ - Ubuntu Precise Pangolin 12.04 LTS
+
+### Mac OS X
+ - Lion (10.7)
+ - Snow Leopard (10.6)
+
+### Windows
+
 ## How to install
 
-### linux requirments
+### linux requirements
 - `sudo apt-get install vim-nox curl git`
 
 ### one-liner install script
@@ -41,6 +54,27 @@ trlp replaces the Command-T plugin with a 100% viml plugin. It provides an intui
 
 **QuickStart** Launch using `<c-p>`.
 
+## [Surround]
+
+This plugin is a tool for dealing with pairs of "surroundings."  Examples
+of surroundings include parentheses, quotes, and HTML tags.  They are
+closely related to what Vim refers to as text-objects.  Provided
+are mappings to allow for removing, changing, and adding surroundings.
+
+Details follow on the exact semantics, but first, consider the following
+examples.  An asterisk (*) is used to denote the cursor position.
+
+     Old text                  Command     New text ~
+     "Hello *world!"           ds"         Hello world!
+     [123+4*56]/2              cs")        (123+456)/2
+     "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
+     if *x>3 {                 ysW(        if ( x>3 ) {
+     my $str = *whee!;         vlllls'     my $str = 'whee!';
+
+For instance, if the cursor was inside `"foo bar"`, you could type
+`cs"'` to convert the text to `'foo bar'`.
+
+There's a lot more, check it out at `:help surround` "})}</q></q>"
 
 
 
