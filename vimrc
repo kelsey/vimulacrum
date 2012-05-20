@@ -149,24 +149,24 @@
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
 
-    set backspace=indent,eol,start  " backspace for dummies
-    set linespace=0                 " No extra spaces between rows
-    set nu                          " Line numbers on
-    set incsearch                   " find as you type search
-    set hlsearch                    " highlight search terms
-    set winminheight=0              " windows can be 0 line high
-    set ignorecase                  " case insensitive search
-    set smartcase                   " case sensitive when uc present
-    set wildmenu                    " show list instead of just completing
-    set wildmode=list:longest       " command <Tab> completion, list matches, then longest common part. (bash-like)
-    "set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
-    set whichwrap=b,s,<,>,[,]   " backspace and cursor keys wrap to
-    "set scrolljump=5                " lines to scroll when cursor leaves screen
-    "set scrolloff=3                 " minimum lines to keep above and below cursor
-    set foldenable                  " auto fold code
+    set backspace=indent,eol,start       " backspace for dummies
+    set linespace=0                      " No extra spaces between rows
+    set nu                               " Line numbers on
+    set incsearch                        " find as you type search
+    set hlsearch                         " highlight search terms
+    set winminheight=0                   " windows can be 0 line high
+    set ignorecase                       " case insensitive search
+    set smartcase                        " case sensitive when uc present
+    set wildmenu                         " show list instead of just completing
+    set wildmode=list:longest            " command <Tab> completion, list matches, then longest common part. (bash-like)
+    set wildignore+=*.o,*.obj,.git,*.rbc " don't include these files in search
+    "set whichwrap=b,s,h,l,<,>,[,]       " backspace and cursor keys wrap to
+    set whichwrap=b,s,<,>,[,]            " backspace and cursor keys wrap to
+    "set scrolljump=5                    " lines to scroll when cursor leaves screen
+    "set scrolloff=3                     " minimum lines to keep above and below cursor
+    set foldenable                       " auto fold code
     set list
     set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
-
 
 " }
 
@@ -531,16 +531,23 @@ endif
 set history=1000
 set directory=~/.vim/swaps
 
-" Use local vimrc if available {
+" Local Configuration {
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
     endif
-" }
 
-" Use local gvimrc if available and gui is running {
     if has('gui_running') 
         if filereadable(expand("~/.gvimrc.local")) 
             source ~/.gvimrc.local
         endif
     endif
+" }
+
+" Auto-load Vimrcs {
+    autocmd! BufWritePost vimrc source %
+    autocmd! BufWritePost .vimrc source %
+    autocmd! BufWritePost .vimrc.local source %
+    autocmd! BufWritePost gvimrc source %
+    autocmd! BufWritePost .gvimrc source %
+    autocmd! BufWritePost .gvimrc.local source %
 " }
