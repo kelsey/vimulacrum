@@ -531,6 +531,12 @@ endif
 set history=1000
 set directory=~/.vim/swaps
 
+" Remember last location in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
+
 " Local Configuration {
     if filereadable(expand("~/.vimrc.local"))
         source ~/.vimrc.local
