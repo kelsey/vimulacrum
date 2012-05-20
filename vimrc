@@ -28,7 +28,7 @@
 
     " Windows Compatible {
       " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-      " across (heterogeneous) systems easier. 
+      " across (heterogeneous) systems easier.
       if has('win32') || has('win64')
         set
         runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
@@ -232,7 +232,7 @@
 
     " visual shifting (does not exit Visual mode)
     vnoremap < <gv
-    vnoremap > >gv 
+    vnoremap > >gv
 
     " Fix home and end keybindings for screen, particularly on mac
     " - for some reason this fixes the arrow keys too. huh.
@@ -417,10 +417,10 @@
         inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
 
-        " <CR>: close popup 
+        " <CR>: close popup
         " <s-CR>: close popup and save indent.
         inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>" 
+        inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
         " <TAB>: completion.
         inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -509,8 +509,8 @@ endfunction
         source ~/.vimrc.local
     endif
 
-    if has('gui_running') 
-        if filereadable(expand("~/.gvimrc.local")) 
+    if has('gui_running')
+        if filereadable(expand("~/.gvimrc.local"))
             source ~/.gvimrc.local
         endif
     endif
