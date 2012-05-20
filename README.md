@@ -26,7 +26,7 @@ TASK LIST:
 
 ## How to install
 
-### linux requirments
+### linux requirements
 - `sudo apt-get install vim-nox curl git`
 
 ### one-liner install script
