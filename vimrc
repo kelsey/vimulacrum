@@ -19,6 +19,9 @@
       set history=1000
       set directory=~/.vim/swaps
 
+      " Thorfile, Rakefile and Gemfile are ruby files
+      au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
+
       " Remember last location in file
       if has("autocmd")
           au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
@@ -30,8 +33,7 @@
       " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
       " across (heterogeneous) systems easier.
       if has('win32') || has('win64')
-        set
-        runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+        set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
       endif
     " }
 
