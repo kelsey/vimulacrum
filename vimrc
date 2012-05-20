@@ -45,6 +45,7 @@
     Bundle 'AutoClose'
     Bundle 'kien/ctrlp.vim'
     Bundle 'spf13/vim-preview'
+    Bundle 'nelstrom/vim-markdown-preview'
     "Bundle 'vim-scripts/sessionman.vim'
     " Extends % for HTML, LaTeX etc.
     Bundle 'matchit.zip'
