@@ -62,6 +62,7 @@
     Bundle 'kien/ctrlp.vim'
     Bundle 'spf13/vim-preview'
     Bundle 'nelstrom/vim-markdown-preview'
+    Bundle 'ZoomWin'
     "Bundle 'vim-scripts/sessionman.vim'
     " Extends % for HTML, LaTeX etc.
     Bundle 'matchit.zip'
@@ -449,9 +450,11 @@
         if has('conceal')
             set conceallevel=2 concealcursor=i
         endif
-
      " }
 
+     " ZoomWin {
+        map <silent> <Leader>z :ZoomWin<CR>
+     "}
 
 " }
 
