@@ -1,7 +1,7 @@
 " Modeline and Notes {
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 "
-" This is the vimrc for sexyvim2.
+" This is the vimrc for vimulacrum.
 " }
 
 " Environment {
