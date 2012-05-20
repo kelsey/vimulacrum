@@ -486,38 +486,7 @@
     endif
 " }
 
- " Functions {
-
-function! InitializeDirectories()
-    let separator = "."
-    let parent = $HOME
-    let prefix = '.vim'
-    let dir_list = {
-                \ 'backup': 'backupdir',
-                \ 'views': 'viewdir',
-                \ 'swap': 'directory' }
-
-    if has('persistent_undo')
-        let dir_list['undo'] = 'undodir'
-    endif
-
-    for [dirname, settingname] in items(dir_list)
-        let directory = parent . '/' . prefix . dirname . "/"
-        if exists("*mkdir")
-            if !isdirectory(directory)
-                call mkdir(directory)
-            endif
-        endif
-        if !isdirectory(directory)
-            echo "Warning: Unable to create backup directory: " . directory
-            echo "Try: mkdir -p " . directory
-        else
-            let directory = substitute(directory, " ", "\\\\ ", "g")
-            exec "set " . settingname . "=" . directory
-        endif
-    endfor
-endfunction
-call InitializeDirectories()
+" Functions {
 
 function! NERDTreeInitAsNeeded()
     redir => bufoutput
@@ -551,6 +520,16 @@ map <silent> <C-n> :bn<CR>
 
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\ 
+
+" paper trail
+set backupdir=~/.vim/backups
+set backup
+if version >= 703
+  set undodir=~/.vim/undos
+  set undofile
+endif
+set history=1000
+set directory=~/.vim/swaps
 
 " Use local vimrc if available {
     if filereadable(expand("~/.vimrc.local"))

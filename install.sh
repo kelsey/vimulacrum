@@ -25,6 +25,12 @@ ln -s $install_directory/vimrc $HOME/.vimrc
 ln -s $install_directory/vim $HOME/.vim
 echo "done!\n"
 
+printf "* Creating paper trail directories..."
+mkdir $install_directory/vim/backups
+mkdir $install_directory/vim/undos
+mkdir $install_directory/vim/swaps
+echo "done!"
+
 printf "* Installing Vundle..."
 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 echo "done!\n"

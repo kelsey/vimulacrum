@@ -2,3 +2,6 @@
 *.pyc
 *._*
 vim/bundle
+vim/backups/*
+vim/undos/*
+vim/swaps/*
