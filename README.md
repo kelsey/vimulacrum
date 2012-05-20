@@ -1,7 +1,7 @@
 vimulacrum
 ==========
-[sim-yuh-ley-kruhm]
-/ˌsɪmyəˈleɪkrəm/
+[vim-yuh-ley-kruhm]
+/ˌvɪmyəˈleɪkrəm/
 
 The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing it exists!
 
