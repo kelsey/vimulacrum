@@ -101,7 +101,6 @@
 " }
 
 " General {
-    set background=dark         " Assume a dark background
     if !has('gui')
         "set term=$TERM          " Make arrow and other keys work
     endif
@@ -115,7 +114,6 @@
     " set autowrite                  " automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
-    set virtualedit=onemore         " allow for cursor beyond last character
     set history=1000                " Store a ton of history (default is 20)
     set spell                       " spell checking on
     set hidden                      " allow buffer switching without saving
@@ -154,7 +152,6 @@
     set backspace=indent,eol,start  " backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set nu                          " Line numbers on
-    set showmatch                   " show matching brackets/parenthesis
     set incsearch                   " find as you type search
     set hlsearch                    " highlight search terms
     set winminheight=0              " windows can be 0 line high
@@ -189,28 +186,14 @@
 
 " Key (re)Mappings {
 
-    "The default leader is '\', but many people prefer ',' as it's in a standard
-    "location
+    " The spacebar is worthless otherwise!
     let mapleader = ' '
-
-    " Making it so ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
-    nnoremap ; :
 
     " Easier moving in tabs and windows
     map <C-J> <C-W>j<C-W>_
     map <C-K> <C-W>k<C-W>_
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
-
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    nnoremap j gj
-    nnoremap k gk
-
-    " The following two lines conflict with moving to top and bottom of the
-    " screen
-    " If you prefer that functionality, comment them out.
-    map <S-H> gT
-    map <S-L> gt
 
     " Stupid shift key fixes
     cmap W w
@@ -475,12 +458,20 @@
 " GUI Settings {
     " GVIM- (here instead of .gvimrc)
     if has('gui_running')
-        set guioptions-=T           " remove the toolbar
-        set lines=40                " 40 lines of text instead of 24,
+        set guioptions-=T   ""
+        set guioptions-=r   ""
+        set guioptions-=R   ""
+        set guioptions-=l   " remove every single stupid concept of a
+        set guioptions-=L   " toolbar, menu bar, scroll bar, gay bar,
+        set guioptions-=h   " etc.
+        set guioptions-=b   ""
+        set guioptions-=m   ""
+
+        set transparency=0  " Don't ever have a transparent window
+        set lines=40        " 40 lines of text instead of 24,
         colorscheme molokai
         if has('gui_macvim')
             set guifont=Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
-            set transparency=5          " Make the window slightly transparent
         endif
     else
         "set term=builtin_ansi       " Make arrow and other keys work
