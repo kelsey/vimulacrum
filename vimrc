@@ -128,8 +128,6 @@
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
 
-    "set cursorline                  " highlight current line
-
     if has('cmdline_info')
         set ruler                   " show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
@@ -141,9 +139,9 @@
         set laststatus=2
 
         " Broken down into easily includeable segments
-        set statusline=%<%f " Filename
-        set statusline+=%w%h%m%r " Options
-        set statusline+=%{fugitive#statusline()} "  Git Hotness
+        set statusline=%<%f                      " Filename
+        set statusline+=%w%h%m%r                 " Options
+        set statusline+=%{fugitive#statusline()} " Git Hotness
         set statusline+=\ [%{&ff}/%Y]            " filetype
         set statusline+=\ [%{getcwd()}]          " current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
@@ -160,10 +158,6 @@
     set wildmenu                         " show list instead of just completing
     set wildmode=list:longest            " command <Tab> completion, list matches, then longest common part. (bash-like)
     set wildignore+=*.o,*.obj,.git,*.rbc " don't include these files in search
-    "set whichwrap=b,s,h,l,<,>,[,]       " backspace and cursor keys wrap to
-    set whichwrap=b,s,<,>,[,]            " backspace and cursor keys wrap to
-    "set scrolljump=5                    " lines to scroll when cursor leaves screen
-    "set scrolloff=3                     " minimum lines to keep above and below cursor
     set foldenable                       " auto fold code
     set list
     set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
@@ -171,13 +165,11 @@
 " }
 
 " Formatting {
-    set nowrap                      " wrap long lines
     set autoindent                  " indent at the same level of the previous line
     set shiftwidth=2                " use indents of 4 spaces
     set expandtab                   " tabs are spaces, not tabs
     set tabstop=2                   " an indentation every four columns
     set softtabstop=2               " let backspace delete indent
-    "set matchpairs+=<:>                " match, to be used with % 
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
@@ -188,12 +180,6 @@
 
     " The spacebar is worthless otherwise!
     let mapleader = ' '
-
-    " Easier moving in tabs and windows
-    map <C-J> <C-W>j<C-W>_
-    map <C-K> <C-W>k<C-W>_
-    map <C-L> <C-W>l<C-W>_
-    map <C-H> <C-W>h<C-W>_
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
