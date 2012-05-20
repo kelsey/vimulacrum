@@ -378,6 +378,7 @@
 
      " ctrlp {
         let g:ctrlp_map = "<leader>f"
+        map <silent> <leader>b :CtrlPBuffer<CR>
         let g:ctrlp_working_path_mode = 2
         let g:ctrlp_max_height = 20
         let g:ctrlp_custom_ignore = {
