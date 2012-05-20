@@ -8,6 +8,22 @@
     " Basics {
       set nocompatible        " must be first line
       set background=dark     " Assume a dark background
+
+      " paper trail
+      set backup
+      set backupdir=~/.vim/backups
+      if version >= 703
+        set undofile
+        set undodir=~/.vim/undos
+      endif
+      set history=1000
+      set directory=~/.vim/swaps
+
+      " Remember last location in file
+      if has("autocmd")
+          au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
+              \| exe "normal g'\"" | endif
+      endif
     "}
 
     " Windows Compatible {
@@ -107,16 +123,23 @@
     endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " syntax highlighting
-    "set mouse=a                 " automatically enable mouse usage
+
+    " we love utf-8
     scriptencoding utf-8
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    set encoding=utf-8
+
+    " increment/decrement base 10 instead of octal default
+    set nrformats=alpha
+
+    "set mouse=a                 " automatically enable mouse usage
     " always switch to the current file directory.
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
-    set history=1000                " Store a ton of history (default is 20)
     set spell                       " spell checking on
     set hidden                      " allow buffer switching without saving
+    set fillchars+=stl:\ ,stlnc:\
 " }
 
 " Vim UI {
@@ -127,6 +150,12 @@
         let g:solarized_visibility="high"
     set tabpagemax=15               " only show 15 tabs
     set showmode                    " display the current mode
+
+    " make sure Linux terminal color support works
+    if $TERM == "xterm"
+        "for 256 color support in terminal vim
+        set t_Co=256
+    endif
 
     if has('cmdline_info')
         set ruler                   " show the ruler
@@ -161,17 +190,17 @@
     set foldenable                       " auto fold code
     set list
     set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
-
 " }
 
 " Formatting {
-    set autoindent                  " indent at the same level of the previous line
-    set shiftwidth=2                " use indents of 4 spaces
-    set expandtab                   " tabs are spaces, not tabs
-    set tabstop=2                   " an indentation every four columns
-    set softtabstop=2               " let backspace delete indent
-    set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+    set autoindent                    " indent at the same level of the previous line
+    set cinkeys=0{,0},:,0#,!<Tab>,!^F " indent current line with these keystrokes
+    set shiftwidth=2                  " use indents of 4 spaces
+    set expandtab                     " tabs are spaces, not tabs
+    set tabstop=2                     " an indentation every four columns
+    set softtabstop=2                 " let backspace delete indent
+    set pastetoggle=<F12>             " pastetoggle (sane indentation on pastes)
+    "set comments=sl:/*,mb:*,elx:*/   " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " }
@@ -181,10 +210,18 @@
     " The spacebar is worthless otherwise!
     let mapleader = ' '
 
+    " buffer and split navigation
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+    map <silent> <C-n> :bn<CR>
+    map <silent> <C-p> :bp<CR>
+
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
-    "clearing highlighted search
+    " clearing highlighted search
     nmap <silent> <leader>/ :nohlsearch<CR>
 
     " Shortcuts
@@ -463,45 +500,6 @@ function! NERDTreeInitAsNeeded()
     endif
 endfunction
 " }
-
-" add custom stuff here
-" make sure Linux terminal color support works
-if $TERM == "xterm"
-    "for 256 color support in terminal vim
-    set t_Co=256
-endif
-
-set cinkeys=0{,0},:,0#,!<Tab>,!^F
-
-" buffer and split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <silent> <C-n> :bn<CR>
-map <silent> <C-p> :bp<CR>
-
-set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\ 
-
-" paper trail
-set backupdir=~/.vim/backups
-set backup
-if version >= 703
-  set undodir=~/.vim/undos
-  set undofile
-endif
-set history=1000
-set directory=~/.vim/swaps
-
-" increment/decrement base 10 instead of octal default
-set nrformats=alpha
-
-" Remember last location in file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
 
 " Local Configuration {
     if filereadable(expand("~/.vimrc.local"))
