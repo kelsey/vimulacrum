@@ -27,6 +27,22 @@ NERDTree is a file explorer plugin that provides "project drawer"
 functionality to your vim editing.  You can learn more about it with
 :help NERDTree
 
+**QuickStart** Launch using `<Leader>n`.
+
+**Customizations**: 
+
+* Use `<Leader>n` to toggle NERDTree
+* Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
+* Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
+* Treat NERDTree more like a panel than a split.
+
+### [ctrlp]
+trlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
+
+**QuickStart** Launch using `<c-p>`.
+
+
+
 
 [Git]:http://git-scm.com
 [Curl]:http://curl.haxx.se
