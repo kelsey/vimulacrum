@@ -36,9 +36,9 @@
     " }
 
     " Set Up Bundle Support {
-    " The next two lines ensure that the ~/.vim/bundle/ system works
-       set rtp+=~/.vim/bundle/vundle
-       call vundle#rc()
+      " The next two lines ensure that the ~/.vim/bundle/ system works
+      set rtp+=~/.vim/bundle/vundle
+      call vundle#rc()
     " }
 " }
 
@@ -50,9 +50,9 @@
     Bundle 'mileszs/ack.vim'
 
     " Use local bundles if available {
-    if filereadable(expand("~/.vimrc.bundles.local"))
-      source ~/.vimrc.bundles.local
-    endif
+      if filereadable(expand("~/.vimrc.bundles.local"))
+        source ~/.vimrc.bundles.local
+      endif
     " }
 
     " General
@@ -294,6 +294,7 @@
     " }
 
     " Ctags {
+        map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
         set tags=./tags;/,~/.vimtags
     " }
 
@@ -455,7 +456,6 @@
      " ZoomWin {
         map <silent> <Leader>z :ZoomWin<CR>
      "}
-
 " }
 
 " GUI Settings {
