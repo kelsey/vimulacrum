@@ -198,18 +198,6 @@
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
-    """ Code folding options
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
-
     "clearing highlighted search
     nmap <silent> <leader>/ :nohlsearch<CR>
 
@@ -353,10 +341,6 @@
         nmap <leader>ss :SessionSave<CR>
      " }
 
-     " Buffer explorer {
-        nmap <leader>b :BufExplorer<CR>
-     " }
-
      " JSON {
         nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
      " }
@@ -366,9 +350,8 @@
      " }
 
      " ctrlp {
+        let g:ctrlp_map = "<leader>f"
         let g:ctrlp_working_path_mode = 2
-        nnoremap <silent> <D-t> :CtrlP<CR>
-        nnoremap <silent> <D-r> :CtrlPMRU<CR>
         let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn$',
             \ 'file': '\.exe$\|\.so$\|\.dll$' }
@@ -509,7 +492,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 map <silent> <C-n> :bn<CR>
-"map <silent> <C-p> :bp<CR>
+map <silent> <C-p> :bp<CR>
 
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\ 
