@@ -196,20 +196,20 @@
 " }
 
 " Formatting {
-    set autoindent                    " indent at the same level of the previous line
-    set cinkeys=0{,0},:,0#,!<Tab>,!^F " indent current line with these keystrokes
-    set shiftwidth=2                  " use indents of 4 spaces
-    set expandtab                     " tabs are spaces, not tabs
-    set tabstop=2                     " an indentation every four columns
-    set softtabstop=2                 " let backspace delete indent
-    set pastetoggle=<F12>             " pastetoggle (sane indentation on pastes)
-    "set comments=sl:/*,mb:*,elx:*/   " auto format comment blocks
+    set autoindent                        " indent at the same level of the previous line
+    set cinkeys=0{,0},:,0#,!<Tab>,!^F     " indent current line with these keystrokes
+    set shiftwidth=2                      " use indents of 4 spaces
+    set expandtab                         " tabs are spaces, not tabs
+    autocmd FileType make set noexpandtab " ...unless you're creating a make file
+    set tabstop=2                         " an indentation every four columns
+    set softtabstop=2                     " let backspace delete indent
+    set pastetoggle=<F12>                 " pastetoggle (sane indentation on pastes)
+    "set comments=sl:/*,mb:*,elx:*/       " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
     autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " }
 
 " Key (re)Mappings {
-
     " The spacebar is worthless otherwise!
     let mapleader = ' '
 
@@ -259,7 +259,6 @@
 " }
 
 " Plugins {
-
     " PIV {
         let g:DisableAutoPHPFolding = 0
         let g:PIVAutoClose = 0
@@ -493,18 +492,17 @@
 " }
 
 " Functions {
-
-function! NERDTreeInitAsNeeded()
-    redir => bufoutput
-    buffers!
-    redir END
-    let idx = stridx(bufoutput, "NERD_tree")
-    if idx > -1
-        NERDTreeMirror
-        NERDTreeFind
-        wincmd l
-    endif
-endfunction
+    function! NERDTreeInitAsNeeded()
+        redir => bufoutput
+        buffers!
+        redir END
+        let idx = stridx(bufoutput, "NERD_tree")
+        if idx > -1
+            NERDTreeMirror
+            NERDTreeFind
+            wincmd l
+        endif
+    endfunction
 " }
 
 " Local Configuration {
