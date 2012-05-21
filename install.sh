@@ -14,8 +14,8 @@ die() {
 echo "\n*** Vimulacrum commences now! ***\n"
 
 printf "* Backing up your current Vim configuration..."
-today=`date +%Y%m%d`
-for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today; done
+old="vimulacrum"
+for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$old; done
 echo "done!\n"
 
 printf "* Cloning the vimulacrum repository onto your machine..."
