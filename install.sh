@@ -19,7 +19,7 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv $i $i.$today;
 echo "done!\n"
 
 printf "* Cloning the vimulacrum repository onto your machine..."
-git clone --recursive git@github.com:kelsey/vimulacrum.git $install_directory
+git clone --recursive git://github.com/kelsey/vimulacrum.git $install_directory
 mkdir -p $install_directory/vim/bundle
 ln -s $install_directory/vimrc $HOME/.vimrc
 ln -s $install_directory/vim $HOME/.vim
