@@ -458,9 +458,6 @@
     set guioptions-=b   ""
     set guioptions-=m   ""
 
-    if version >= 703
-      set transparency=0 " don't ever have a transparent window
-    endif
     set lines=40         " 40 lines of text instead of 24,
     colo molokai
     if has('gui_macvim')
@@ -475,6 +472,7 @@
     set fuoptions=maxhorz,maxvert
 
     set guifont=menlo\ bold:h12
+    set transparency=0 " don't ever have a transparent window
   endif
 " }
 
