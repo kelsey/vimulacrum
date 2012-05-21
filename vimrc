@@ -157,8 +157,8 @@
 
   " make sure Linux terminal color support works
   if $TERM == "xterm"
-      "for 256 color support in terminal vim
-      set t_Co=256
+    "for 256 color support in terminal vim
+    set t_Co=256
   endif
 
   if has('cmdline_info')
