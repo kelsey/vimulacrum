@@ -458,8 +458,10 @@
     set guioptions-=b   ""
     set guioptions-=m   ""
 
-    set transparency=0  " don't ever have a transparent window
-    set lines=40        " 40 lines of text instead of 24,
+    if version >= 703
+      set transparency=0 " don't ever have a transparent window
+    endif
+    set lines=40         " 40 lines of text instead of 24,
     colo molokai
     if has('gui_macvim')
       set guifont=Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
