@@ -67,6 +67,10 @@
   if executable('ack')
     Bundle 'mileszs/ack.vim'
   endif
+  if executable('ack-grep')
+    Bundle 'mileszs/ack.vim'
+    let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+  endif
 
   " Colorschemes
   Bundle 'altercation/vim-colors-solarized'
