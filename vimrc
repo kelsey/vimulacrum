@@ -45,11 +45,8 @@
 " }
 
 " Bundles {
-  " Deps
+  " Dependencies
   Bundle 'gmarik/vundle'
-  Bundle 'MarcWeber/vim-addon-mw-utils'
-  Bundle 'tomtom/tlib_vim'
-  Bundle 'mileszs/ack.vim'
 
   " Use local bundles if available {
     if filereadable(expand("~/.vimrc.bundles.local"))
@@ -62,16 +59,14 @@
   Bundle 'tpope/vim-surround'
   Bundle 'AutoClose'
   Bundle 'kien/ctrlp.vim'
-  Bundle 'spf13/vim-preview'
   Bundle 'nelstrom/vim-markdown-preview'
   Bundle 'ZoomWin'
-  "Bundle 'vim-scripts/sessionman.vim'
-  " Extends % for HTML, LaTeX etc.
   Bundle 'matchit.zip'
-  ""Bundle 'Lokaltog/vim-powerline'
-  " Approximate colorschemes
+  Bundle 'Lokaltog/vim-powerline'
   "Bundle 'godlygeek/csapprox'
-  "Bundle 'jistr/vim-nerdtree-tabs'
+  if executable('ack')
+    Bundle 'mileszs/ack.vim'
+  endif
 
   " Colorschemes
   Bundle 'altercation/vim-colors-solarized'
@@ -81,14 +76,21 @@
   " General Programming
   " Pick one of the checksyntax, jslint, or syntastic
   Bundle 'scrooloose/syntastic'
-  Bundle 'garbas/vim-snipmate'
-  Bundle 'spf13/snipmate-snippets'
-  " Git wrapper
   Bundle 'tpope/vim-fugitive'
-  "Bundle 'scrooloose/nerdcommenter'
+  Bundle 'scrooloose/nerdcommenter'
   Bundle 'godlygeek/tabular'
-  Bundle 'majutsushi/tagbar'
+  if executable('ctags')
+    Bundle 'majutsushi/tagbar'
+  endif
   Bundle 'Shougo/neocomplcache'
+
+  " Snipmate with mandatory dependencies {
+    Bundle 'garbas/vim-snipmate'
+    Bundle 'MarcWeber/vim-addon-mw-utils'
+    Bundle 'tomtom/tlib_vim'
+    " ... but this one is optional
+    Bundle 'spf13/snipmate-snippets'
+  " }
 
   " PHP
   "Bundle 'spf13/PIV'
@@ -109,11 +111,10 @@
   Bundle 'HTML-AutoCloseTag'
   Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 
-  " Ruby
-  ""Bundle 'rails.vim'
+  " Rails
+  Bundle 'tpope/vim-rails'
 
   " Misc
-  "Bundle 'spf13/vim-markdown'
   "Bundle 'tpope/vim-cucumber'
   "Bundle 'Puppet-Syntax-Highlighting'
   "Bundle 'vim-scripts/sudo.vim'
@@ -210,7 +211,7 @@
   autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 " }
 
-" Key (re)Mappings {
+" Key Bindings {
   " The spacebar is worthless otherwise!
   let mapleader = ' '
 
@@ -236,13 +237,6 @@
   " visual shifting (does not exit Visual mode)
   vnoremap < <gv
   vnoremap > >gv
-
-  " Fix home and end keybindings for screen, particularly on mac
-  " - for some reason this fixes the arrow keys too. huh.
-  map [F $
-  imap [F $
-  map [H g0
-  imap [H g0
 
   " For when you forget to sudo.. Really Write the file.
   cmap w!! w !sudo tee % >/dev/null
@@ -464,9 +458,9 @@
     set guioptions-=b   ""
     set guioptions-=m   ""
 
-    set transparency=0  " Don't ever have a transparent window
+    set transparency=0  " don't ever have a transparent window
     set lines=40        " 40 lines of text instead of 24,
-    colorscheme molokai
+    colo molokai
     if has('gui_macvim')
       set guifont=Menlo\ Regular:h15,Consolas\ Regular:h16,Courier\ New\ Regular:h18
     endif
@@ -478,7 +472,6 @@
     " Fullscreen takes up entire screen
     set fuoptions=maxhorz,maxvert
 
-    " looks like ass in Linux but swell on a Crapple -- watch out!
     set guifont=menlo\ bold:h12
   endif
 " }
@@ -497,6 +490,15 @@
   endfunction
 " }
 
+" Auto-load Vimrcs {
+  autocmd! BufWritePost vimrc source %
+  autocmd! BufWritePost .vimrc source %
+  autocmd! BufWritePost .vimrc.local source %
+  autocmd! BufWritePost gvimrc source %
+  autocmd! BufWritePost .gvimrc source %
+  autocmd! BufWritePost .gvimrc.local source %
+" }
+
 " Local Configuration {
   if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
@@ -507,13 +509,4 @@
       source ~/.gvimrc.local
     endif
   endif
-" }
-
-" Auto-load Vimrcs {
-  autocmd! BufWritePost vimrc source %
-  autocmd! BufWritePost .vimrc source %
-  autocmd! BufWritePost .vimrc.local source %
-  autocmd! BufWritePost gvimrc source %
-  autocmd! BufWritePost .gvimrc source %
-  autocmd! BufWritePost .gvimrc.local source %
 " }
