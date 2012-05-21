@@ -7,7 +7,7 @@ call mkdir %BASE_DIR%\vim\bundle
 call mkdir %BASE_DIR%\vim\backups
 call mkdir %BASE_DIR%\vim\undos
 call mkdir %BASE_DIR%\vim\swaps
-call mklink /J %HOME%\.vim %BASE_DIR%\.vim
+call mklink /J %HOME%\.vim %BASE_DIR%\vim
 call mklink %HOME%\.vimrc %BASE_DIR%\.vimrc
 call mklink %HOME%\_vimrc %BASE_DIR%\.vimrc
 
