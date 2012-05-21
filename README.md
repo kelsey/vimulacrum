@@ -24,7 +24,7 @@ The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing i
 - `sudo apt-get install vim-nox curl git`
 
 ### one-liner install script
-- `curl https://raw.github.com/kelsey/vimulacrum/master/install.sh -l -o - | bash`
+- `curl https://raw.github.com/kelsey/vimulacrum/master/install -l -o - | bash`
 
 ## Main plugins
 
