@@ -143,7 +143,7 @@
   set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
   set spell                       " spell checking on
   set hidden                      " allow buffer switching without saving
-  set fillchars+=stl:\ ,stlnc:\
+  set fillchars+=stl:\ ,stlnc:\ 
 " }
 
 " Vim UI {
