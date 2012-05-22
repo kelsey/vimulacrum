@@ -62,7 +62,7 @@
   Bundle 'nelstrom/vim-markdown-preview'
   Bundle 'ZoomWin'
   Bundle 'matchit.zip'
-  Bundle 'Lokaltog/vim-powerline'
+  "Bundle 'Lokaltog/vim-powerline'
   "Bundle 'godlygeek/csapprox'
   if executable('ack')
     Bundle 'mileszs/ack.vim'
