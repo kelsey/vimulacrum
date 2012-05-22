@@ -177,10 +177,11 @@
     set laststatus=2
 
     " Broken down into easily includeable segments
-    set statusline=%<%f                      " Filename
-    set statusline+=%w%h%m%r                 " Options
-    set statusline+=%{fugitive#statusline()} " Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " filetype
+    " note that the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+    set statusline=%<%F                      " Filename
+    set statusline+=\ %w%h%m%r                 " Options
+    set statusline+=\ %{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%{&enc}/%Y]            " filetype
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   endif
 
