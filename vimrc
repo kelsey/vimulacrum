@@ -195,7 +195,7 @@
   set smartcase                        " case sensitive when uc present
   set wildmenu                         " show list instead of just completing
   set wildmode=list:longest            " command <Tab> completion, list matches, then longest common part. (bash-like)
-  set wildignore+=*.o,*.obj,.git,*.rbc " don't include these files in search
+  set wildignore+=*.o,*.obj,.git,*.rbc,*.swp,*~ " don't include these files in search
   set foldenable                       " auto fold code
   set list
   set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
