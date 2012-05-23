@@ -7,11 +7,14 @@ vimulacrum
 The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing it exists!
 
 ## Vim philosophy
+
 ### easy installation
 - for system admins who need to install fresh new systems often
+
 ### keep vim lightweight
 - not everyone has a Corei7 CPU and 8GB of RAM
 - should be usable over ssh, putty and teraterm
+
 ### adherence to original Vim's keybindings
 - don't use too many plugins that remap keys
 - don't over-customize to the point where you can't use vanilla Vim anymore
