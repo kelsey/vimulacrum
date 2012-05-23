@@ -182,7 +182,7 @@
     set statusline+=\ %w%h%m%r                 " Options
     "set statusline+=%=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
     set statusline+=%=%{&ff}/%{&enc}/%Y            " filetype
-    set statusline+=\ %-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    set statusline+=\ %-11.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   endif
 
   set backspace=indent,eol,start       " backspace for dummies
@@ -406,6 +406,8 @@
      inoremap <expr><C-g>     neocomplcache#undo_completion()
      inoremap <expr><C-l>     neocomplcache#complete_common_string()
 
+     " Stop the automatically popup - invoke manually with C-x,C-u
+     let g:neocomplcache_disable_auto_complete = 1
 
      " <CR>: close popup
      " <s-CR>: close popup and save indent.
