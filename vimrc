@@ -235,19 +235,19 @@
 
   " Shortcuts
   " Change Working Directory to that of the current file
-  cmap cwd lcd %:p:h
-  cmap cd. lcd %:p:h
+  "cmap cwd lcd %:p:h
+  "cmap cd. lcd %:p:h
 
   " visual shifting (does not exit Visual mode)
   vnoremap < <gv
   vnoremap > >gv
 
   " For when you forget to sudo.. Really Write the file.
-  cmap w!! w !sudo tee % >/dev/null
+  map <leader>w :w !sudo tee % >/dev/null<CR>
 
   " Some helpers to edit mode
   " http://vimcasts.org/e/14
-  cnoremap %% <C-R>=expand('%:h').'/'<cr>
+  "cnoremap %% <C-R>=expand('%:h').'/'<cr>
   map <leader>ew :e %%
   map <leader>es :sp %%
   map <leader>ev :vsp %%
