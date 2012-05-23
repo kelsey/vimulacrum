@@ -6,6 +6,16 @@ vimulacrum
 
 The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing it exists!
 
+## Vim philosophy
+### easy installation
+- for system admins who need to install fresh new systems often
+### keep vim lightweight
+- not everyone has a Corei7 CPU and 8GB of RAM
+- should be usable over ssh, putty and teraterm
+### adherence to original Vim's keybindings
+- don't use too many plugins that remap keys
+- don't over-customize to the point where you can't use vanilla Vim anymore
+
 ## Supported systems
 - Works best with Vim 7.3
 
@@ -28,6 +38,11 @@ The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing i
 
 ## Main plugins
 
+### [ctrlp]
+trlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
+
+**QuickStart** Launch using `<leader>f`.
+
 ### [NERDTree]
 
 NERDTree is a file explorer plugin that provides "project drawer"
@@ -39,16 +54,11 @@ functionality to your vim editing.  You can learn more about it with
 **Customizations**: 
 
 * Use `<Leader>n` to toggle NERDTree
-* Use `<leader>e` or `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
+* Use `<leader>nt` to load NERDTreeFind which opens NERDTree where the current file is located.
 * Hide clutter ('\.pyc', '\.git', '\.hg', '\.svn', '\.bzr')
 * Treat NERDTree more like a panel than a split.
 
-### [ctrlp]
-trlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
-
-**QuickStart** Launch using `<c-p>`.
-
-## [Surround]
+### [Surround]
 
 This plugin is a tool for dealing with pairs of "surroundings."  Examples
 of surroundings include parentheses, quotes, and HTML tags.  They are
@@ -70,6 +80,30 @@ For instance, if the cursor was inside `"foo bar"`, you could type
 
 There's a lot more, check it out at `:help surround` "})}</q></q>"
 
+### [AutoClose]
+
+### [vim-markdown-preview]
+- To preview, `:Mw`
+
+### [ZoomWin]
+- To invoke, `<leader> z`
+
+### [Matchit]
+
+### [Ack.vim]
+
+
+### [Syntastic]
+
+### [Fugitive]
+
+### [NERDCommenter]
+
+### [Tabularize]
+
+### [Tagbar]
+
+### [neocomplcache]
 
 
 [Git]:http://git-scm.com
@@ -102,3 +136,8 @@ There's a lot more, check it out at `:help surround` "})}</q></q>"
 [nerdtree-img]:http://i.imgur.com/9xIfu.png
 [phpmanual-img]:http://i.imgur.com/c0GGP.png
 [easymotion-img]:http://i.imgur.com/ZsrVL.png
+
+[AutoClose]:https://github.com/Townk/vim-autoclose
+[ZoomWin]:http://www.vim.org/scripts/script.php?script_id=508
+[vim-markdown-preview]:https://github.com/nelstrom/vim-markdown-preview
+[Ack.vim]:https://github.com/mileszs/ack.vimc
