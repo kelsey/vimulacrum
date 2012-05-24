@@ -30,19 +30,37 @@ The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing i
  - Snow Leopard (10.6)
 
 ### Windows
+ - TODO
 
 ## How to install
 
 ### linux requirements
-- `sudo apt-get install vim-nox curl git`
+ - vim: to access the full features, we recommend vim version 7.3
+ - git
+ - curl
+ - ack
+ - ctags
+
+#### Debian/Ubuntu
+- for servers: `sudo apt-get install vim-nox curl git ack-grep exuberant-ctags`
+- for desktops: `sudo apt-get install vim-gnome curl git ack-grep exuberant-ctags`
+
+#### Fedora/Red Hat/CentOS
+- for servers: `yum install vim curl git ack ctags`
+- for desktops: `yum install vim-gnome curl git ack ctags`
+
 
 ### one-liner install script
 - `curl https://raw.github.com/kelsey/vimulacrum/master/install -l -o - | bash`
 
+## Notes on shortcut keys
+- `C-x` means control key + 'x' key
+- `<leader>` key means space in our case
+
 ## Main plugins
 
 ### [ctrlp]
-trlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
+Ctrlp replaces the Command-T plugin with a 100% viml plugin. It provides an intuitive and fast mechanism to load files from the file system (with regex and fuzzy find), from open buffers, and from recently used files. 
 
 **QuickStart** Launch using `<leader>f`.
 
@@ -94,19 +112,21 @@ There's a lot more, check it out at `:help surround` "})}</q></q>"
 ### [Matchit]
 
 ### [Ack.vim]
-
+- To use, `:Ack`
 
 ### [Syntastic]
 
 ### [Fugitive]
+- the most useful command is: `:Gblame`
 
 ### [NERDCommenter]
-
+- move the cursor to the line you want to comment out, then use `<leader> cc`
 ### [Tabularize]
 
 ### [Tagbar]
 
 ### [neocomplcache]
+- to manually invoke: `C-x, C-u`
 
 
 [Git]:http://git-scm.com
