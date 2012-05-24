@@ -5,6 +5,10 @@
     set nocompatible        " must be first line
     set background=dark     " Assume a dark background
 
+    " The spacebar is worthless otherwise!
+    " need to set this before the keybindings in the bundle section
+    let mapleader = ' '
+
     " paper trail {
       set backup
       set backupdir=~/.vim/backups
@@ -361,8 +365,6 @@
 " }
 
 " Key Bindings {
-  " The spacebar is worthless otherwise!
-  let mapleader = ' '
 
   " buffer and split navigation
   map <C-h> <C-w>h
