@@ -166,11 +166,11 @@
 
     " Broken down into easily includeable segments
     " note that the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-    set statusline=%<%f                      " Filename
-    set statusline+=\ %w%h%m%r                 " Options
+    "set statusline=%<%f                      " Filename
+    "set statusline+=\ %w%h%m%r                 " Options
     "set statusline+=%=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-    set statusline+=%=%{&ff}/%{&enc}/%Y            " filetype
-    set statusline+=\ %-11.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    "set statusline+=%=%{&ff}/%{&enc}/%Y            " filetype
+    "set statusline+=%=%-11.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   endif
 
   set backspace=indent,eol,start       " backspace for dummies
