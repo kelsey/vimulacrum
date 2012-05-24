@@ -1,11 +1,7 @@
-" Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"
 " This is the vimrc for vimulacrum.
-" }
 
-" Environment {
-  " Basics {
+" Environment
+  " Basics
     set nocompatible        " must be first line
     set background=dark     " Assume a dark background
 
@@ -27,32 +23,27 @@
       au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
         \| exe "normal g'\"" | endif
     endif
-  "}
 
-  " Windows Compatible {
+  " Windows Compatible
     " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
     " across (heterogeneous) systems easier.
     if has('win32') || has('win64')
       set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
-  " }
 
-  " Set Up Bundle Support {
+  " Set Up Bundle Support
     " The next two lines ensure that the ~/.vim/bundle/ system works
     set rtp+=~/.vim/bundle/vundle
     call vundle#rc()
-  " }
-" }
 
-" Bundles {
+" Bundles
   " Dependencies
   Bundle 'gmarik/vundle'
 
-  " Use local bundles if available {
+  " Use local bundles if available
     if filereadable(expand("~/.vimrc.bundles.local"))
       source ~/.vimrc.bundles.local
     endif
-  " }
 
   " General
   Bundle 'scrooloose/nerdtree'
@@ -88,13 +79,12 @@
   endif
   Bundle 'Shougo/neocomplcache'
 
-  " Snipmate with mandatory dependencies {
+  " Snipmate with mandatory dependencies
     Bundle 'garbas/vim-snipmate'
     Bundle 'MarcWeber/vim-addon-mw-utils'
     Bundle 'tomtom/tlib_vim'
     " ... but this one is optional
     Bundle 'spf13/snipmate-snippets'
-  " }
 
   " PHP
   "Bundle 'spf13/PIV'
@@ -123,9 +113,8 @@
   "Bundle 'Puppet-Syntax-Highlighting'
   "Bundle 'vim-scripts/sudo.vim'
   "Bundle 'chrisbra/SudoEdit.vim'
-" }
 
-" General {
+" General
   if !has('gui')
     "set term=$TERM          " Make arrow and other keys work
   endif
@@ -148,9 +137,8 @@
   set spell                       " spell checking on
   set hidden                      " allow buffer switching without saving
   set fillchars+=stl:\ ,stlnc:\ 
-" }
 
-" Vim UI {
+" Vim UI
   color solarized
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
@@ -197,9 +185,8 @@
   set foldenable                       " auto fold code
   set list
   set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
-" }
 
-" Formatting {
+" Formatting
   set autoindent                        " indent at the same level of the previous line
   set cinkeys=0{,0},:,0#,!<Tab>,!^F     " indent current line with these keystrokes
   set shiftwidth=2                      " use indents of 4 spaces
@@ -211,9 +198,8 @@
   "set comments=sl:/*,mb:*,elx:*/       " auto format comment blocks
   " Remove trailing whitespaces and ^M chars
   autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-" }
 
-" Key Bindings {
+" Key Bindings
   " The spacebar is worthless otherwise!
   let mapleader = ' '
 
@@ -253,20 +239,17 @@
 
   " Adjust viewports to the same size
   map <Leader>= <C-w>=
-" }
 
-" Plugins {
-  " PIV {
+" Plugins
+  " PIV
     let g:DisableAutoPHPFolding = 0
     let g:PIVAutoClose = 0
-  " }
 
-  " Misc {
+  " Misc
     let g:NERDShutUp=1
     let b:match_ignorecase = 1
-  " }
 
-  " OmniComplete {
+  " OmniComplete
     if has("autocmd") && exists("+omnifunc")
       autocmd Filetype *
         \if &omnifunc == "" |
@@ -291,22 +274,19 @@
     set completeopt=menu,preview,longest
   " }
 
-  " Ctags {
+  " Ctags
     map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
     set tags=./tags;/,~/.vimtags
-  " }
 
-  " EasyTags {
+  " EasyTags
     let g:easytags_cmd = 'ctags'
-  " }
 
-  " AutoCloseTag {
+  " AutoCloseTag
     " Make it so AutoCloseTag works for xml and xhtml files as well
     au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-  " }
 
-  " NerdTree {
+  " NerdTree
     map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
     map <leader>e :NERDTreeFind<CR>
     "nmap <leader>nt :NERDTreeFind<CR>
@@ -317,9 +297,8 @@
     let NERDTreeQuitOnOpen=1
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
-  " }
 
-  " Tabularize {
+  " Tabularize
      if exists(":Tabularize")
        nmap <Leader>a= :Tabularize /=<CR>
        vmap <Leader>a= :Tabularize /=<CR>
@@ -347,23 +326,19 @@
          endif
        endfunction
      endif
-   " }
 
-   " Session List {
+   " Session List
      set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
      nmap <leader>sl :SessionList<CR>
      nmap <leader>ss :SessionSave<CR>
-   " }
 
-   " JSON {
+   " JSON
      nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-   " }
 
-   " PyMode {
+   " PyMode
      let g:pymode_lint_checker = "pyflakes"
-   " }
 
-   " ctrlp {
+   " ctrlp
      let g:ctrlp_map = "<leader>f"
      map <silent> <leader>b :CtrlPBuffer<CR>
      let g:ctrlp_working_path_mode = 2
@@ -371,22 +346,19 @@
      let g:ctrlp_custom_ignore = {
        \ 'dir':  '\.git$\|\.hg$\|\.svn$',
        \ 'file': '\.exe$\|\.so$\|\.dll$' }
-   " }
 
-   " TagBar {
+   " TagBar
      nnoremap <silent> <leader>tt :TagbarToggle<CR>
-   " }
 
-   " Fugitive {
+   " Fugitive
      nnoremap <silent> <leader>gs :Gstatus<CR>
      nnoremap <silent> <leader>gd :Gdiff<CR>
      nnoremap <silent> <leader>gc :Gcommit<CR>
      nnoremap <silent> <leader>gb :Gblame<CR>
      nnoremap <silent> <leader>gl :Glog<CR>
      nnoremap <silent> <leader>gp :Git push<CR>
-   " }
 
-   " neocomplcache {
+   " neocomplcache
      let g:neocomplcache_enable_at_startup = 1
      let g:neocomplcache_enable_camel_case_completion = 1
      let g:neocomplcache_enable_smart_case = 1
@@ -443,14 +415,11 @@
      if has('conceal')
        set conceallevel=2 concealcursor=i
      endif
-   " }
 
-   " ZoomWin {
+   " ZoomWin
      map <silent> <Leader>z :ZoomWin<CR>
-   " }
-" }
 
-" GUI Settings {
+" GUI Settings
   " GVIM (here instead of .gvimrc)
   if has('gui_running')
     set guioptions-=T   ""
@@ -478,9 +447,8 @@
     set guifont=menlo\ bold:h12
     set transparency=0 " don't ever have a transparent window
   endif
-" }
 
-" Functions {
+" Functions
   function! NERDTreeInitAsNeeded()
     redir => bufoutput
     buffers!
@@ -492,18 +460,16 @@
       wincmd l
     endif
   endfunction
-" }
 
-" Auto-load Vimrcs {
+" Auto-load Vimrcs
   autocmd! BufWritePost vimrc source %
   autocmd! BufWritePost .vimrc source %
   autocmd! BufWritePost .vimrc.local source %
   autocmd! BufWritePost gvimrc source %
   autocmd! BufWritePost .gvimrc source %
   autocmd! BufWritePost .gvimrc.local source %
-" }
 
-" Local Configuration {
+" Local Configuration
   if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
   endif
@@ -513,4 +479,3 @@
       source ~/.gvimrc.local
     endif
   endif
-" }
