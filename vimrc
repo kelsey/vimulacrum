@@ -316,8 +316,8 @@
 
   if has('cmdline_info')
     set ruler                   " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-    set showcmd                 " show partial commands in status line and
+    "set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+    "set showcmd                 " show partial commands in status line and
                                 " selected characters/lines in visual mode
   endif
 
