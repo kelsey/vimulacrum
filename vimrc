@@ -1,60 +1,97 @@
 " This is the vimrc for vimulacrum.
 
-" Environment
-  " Basics
+" Environment {
+  " Basics {
     set nocompatible        " must be first line
     set background=dark     " Assume a dark background
 
-    " paper trail
-    set backup
-    set backupdir=~/.vim/backups
-    if version >= 703
-      set undofile
-      set undodir=~/.vim/undos
-    endif
-    set history=1000
-    set directory=~/.vim/swaps
+    " paper trail {
+      set backup
+      set backupdir=~/.vim/backups
+      if version >= 703
+        set undofile
+        set undodir=~/.vim/undos
+      endif
+      set history=1000
+      set directory=~/.vim/swaps
+    " }
 
     " Thorfile, Rakefile and Gemfile are ruby files
     au BufRead,BufNewFile {Gemfile,Rakefile,Thorfile,config.ru} set ft=ruby
 
-    " Remember last location in file
-    if has("autocmd")
-      au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
-        \| exe "normal g'\"" | endif
-    endif
+    " Remember last location in file {
+      if has("autocmd")
+        au BufReadPost * if line("'\"") > 0 && line("'\"'") <= line("$")
+          \| exe "normal g'\"" | endif
+      endif
+    " }
+  " }
 
-  " Windows Compatible
+  " Windows Compatible {
     " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
     " across (heterogeneous) systems easier.
     if has('win32') || has('win64')
       set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     endif
+  " }
 
-  " Set Up Bundle Support
+  " Set Up Bundle Support {
     " The next two lines ensure that the ~/.vim/bundle/ system works
     set rtp+=~/.vim/bundle/vundle
     call vundle#rc()
+  " }
+" }
 
 " Bundles
   " Dependencies
   Bundle 'gmarik/vundle'
 
-  " Use local bundles if available
+  " Use local bundles if available {
     if filereadable(expand("~/.vimrc.bundles.local"))
       source ~/.vimrc.bundles.local
     endif
+  " }
 
   " General
   Bundle 'scrooloose/nerdtree'
+  " NerdTree {
+    map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+    map <leader>e :NERDTreeFind<CR>
+    "nmap <leader>nt :NERDTreeFind<CR>
+
+    let NERDTreeShowBookmarks=1
+    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+    let NERDTreeChDirMode=0
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeShowHidden=1
+    let NERDTreeKeepTreeInNewTab=1
+
+    let g:NERDShutUp=1
+  " }
+
   Bundle 'tpope/vim-surround'
   Bundle 'AutoClose'
   Bundle 'kien/ctrlp.vim'
+  " ctrlp {
+   let g:ctrlp_map = "<leader>f"
+   map <silent> <leader>b :CtrlPBuffer<CR>
+   let g:ctrlp_working_path_mode = 2
+   let g:ctrlp_max_height = 20
+   let g:ctrlp_custom_ignore = {
+     \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+     \ 'file': '\.exe$\|\.so$\|\.dll$' }
+  " }
   Bundle 'nelstrom/vim-markdown-preview'
   Bundle 'ZoomWin'
+  " ZoomWin {
+   map <silent> <Leader>z :ZoomWin<CR>
+  " }
   Bundle 'matchit.zip'
+  let b:match_ignorecase = 1
+
   "Bundle 'Lokaltog/vim-powerline'
   "Bundle 'godlygeek/csapprox'
+
   if executable('ack')
     Bundle 'mileszs/ack.vim'
   endif
@@ -72,12 +109,117 @@
   " Pick one of the checksyntax, jslint, or syntastic
   Bundle 'scrooloose/syntastic'
   Bundle 'tpope/vim-fugitive'
+  " Fugitive {
+   nnoremap <silent> <leader>gs :Gstatus<CR>
+   nnoremap <silent> <leader>gd :Gdiff<CR>
+   nnoremap <silent> <leader>gc :Gcommit<CR>
+   nnoremap <silent> <leader>gb :Gblame<CR>
+   nnoremap <silent> <leader>gl :Glog<CR>
+   nnoremap <silent> <leader>gp :Git push<CR>
+  " }
   Bundle 'scrooloose/nerdcommenter'
+
   Bundle 'godlygeek/tabular'
+  " Tabularize {
+     if exists(":Tabularize")
+       nmap <Leader>a= :Tabularize /=<CR>
+       vmap <Leader>a= :Tabularize /=<CR>
+       nmap <Leader>a: :Tabularize /:<CR>
+       vmap <Leader>a: :Tabularize /:<CR>
+       nmap <Leader>a:: :Tabularize /:\zs<CR>
+       vmap <Leader>a:: :Tabularize /:\zs<CR>
+       nmap <Leader>a, :Tabularize /,<CR>
+       vmap <Leader>a, :Tabularize /,<CR>
+       nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+       vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+       " The following function automatically aligns when typing a
+       " supported character
+       inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+       function! s:align()
+         let p = '^\s*|\s.*\s|\s*$'
+         if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+           let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+           let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+           Tabularize/|/l1
+           normal! 0
+           call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+         endif
+       endfunction
+     endif
+  " }
+
   if executable('ctags')
     Bundle 'majutsushi/tagbar'
   endif
+  " Ctags {
+    map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+    set tags=./tags;/,~/.vimtags
+  " }
+  " TagBar {
+   nnoremap <silent> <leader>tt :TagbarToggle<CR>
+  " }
+
   Bundle 'Shougo/neocomplcache'
+  " neocomplcache {
+   let g:neocomplcache_enable_at_startup = 1
+   let g:neocomplcache_enable_camel_case_completion = 1
+   let g:neocomplcache_enable_smart_case = 1
+   let g:neocomplcache_enable_underbar_completion = 1
+   let g:neocomplcache_min_syntax_length = 3
+   let g:neocomplcache_enable_auto_delimiter = 1
+
+   " AutoComplPop like behavior.
+   let g:neocomplcache_enable_auto_select = 0
+
+   " SuperTab like snippets behavior.
+   imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+   " Plugin key-mappings.
+   imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+   smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+   inoremap <expr><C-g>     neocomplcache#undo_completion()
+   inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+   " Stop the automatically popup - invoke manually with C-x,C-u
+   let g:neocomplcache_disable_auto_complete = 1
+
+   " <CR>: close popup
+   " <s-CR>: close popup and save indent.
+   inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+   inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
+   " <TAB>: completion.
+   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+   " <C-h>, <BS>: close popup and delete backword char.
+   inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+   inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+   inoremap <expr><C-y>  neocomplcache#close_popup()
+   inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+   " Enable omni completion.
+   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+   " Enable heavy omni completion.
+   if !exists('g:neocomplcache_omni_patterns')
+     let g:neocomplcache_omni_patterns = {}
+   endif
+   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+   "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+   let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+   let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+   let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+   " For snippet_complete marker.
+   if has('conceal')
+     set conceallevel=2 concealcursor=i
+   endif
+  " }
 
   " Snipmate with mandatory dependencies
     Bundle 'garbas/vim-snipmate'
@@ -88,21 +230,38 @@
 
   " PHP
   "Bundle 'spf13/PIV'
+  " PIV {
+    let g:DisableAutoPHPFolding = 0
+    let g:PIVAutoClose = 0
+  " }
 
   " Python
   " Pick either python-mode or pyflakes & pydoc
   "Bundle 'klen/python-mode'
+  " PyMode {
+   let g:pymode_lint_checker = "pyflakes"
+  " }
   "Bundle 'python.vim'
   "Bundle 'python_match.vim'
   "Bundle 'pythoncomplete'
 
   " Javascript
   Bundle 'leshill/vim-json'
+  " JSON {
+    nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+  " }
+
   Bundle 'groenewege/vim-less'
   Bundle 'taxilian/vim-web-indent'
 
   " HTML
   Bundle 'HTML-AutoCloseTag'
+  " AutoCloseTag {
+    " Make it so AutoCloseTag works for xml and xhtml files as well
+    au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+    nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+  " }
+
   Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 
   " Rails
@@ -114,7 +273,7 @@
   "Bundle 'vim-scripts/sudo.vim'
   "Bundle 'chrisbra/SudoEdit.vim'
 
-" General
+" General {
   if !has('gui')
     "set term=$TERM          " Make arrow and other keys work
   endif
@@ -137,8 +296,9 @@
   set spell                       " spell checking on
   set hidden                      " allow buffer switching without saving
   set fillchars+=stl:\ ,stlnc:\ 
+" }
 
-" Vim UI
+" Vim UI {
   color solarized
   let g:solarized_termtrans=1
   let g:solarized_termcolors=256
@@ -184,8 +344,9 @@
   set wildignore+=*.o,*.obj,.git,*.rbc,*.swp,*~ " don't include these files in search
   set list
   set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+" }
 
-" Formatting
+" Formatting {
   set autoindent                        " indent at the same level of the previous line
   set cinkeys=0{,0},:,0#,!<Tab>,!^F     " indent current line with these keystrokes
   set shiftwidth=2                      " use indents of 4 spaces
@@ -197,8 +358,9 @@
   "set comments=sl:/*,mb:*,elx:*/       " auto format comment blocks
   " Remove trailing whitespaces and ^M chars
   autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+" }
 
-" Key Bindings
+" Key Bindings {
   " The spacebar is worthless otherwise!
   let mapleader = ' '
 
@@ -238,17 +400,10 @@
 
   " Adjust viewports to the same size
   map <Leader>= <C-w>=
+" }
 
-" Plugins
-  " PIV
-    let g:DisableAutoPHPFolding = 0
-    let g:PIVAutoClose = 0
-
-  " Misc
-    let g:NERDShutUp=1
-    let b:match_ignorecase = 1
-
-  " OmniComplete
+" Plugins {
+  " OmniComplete {
     if has("autocmd") && exists("+omnifunc")
       autocmd Filetype *
         \if &omnifunc == "" |
@@ -272,153 +427,9 @@
     au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
     set completeopt=menu,preview,longest
   " }
+" }
 
-  " Ctags
-    map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-    set tags=./tags;/,~/.vimtags
-
-  " EasyTags
-    let g:easytags_cmd = 'ctags'
-
-  " AutoCloseTag
-    " Make it so AutoCloseTag works for xml and xhtml files as well
-    au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-    nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-
-  " NerdTree
-    map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-    map <leader>e :NERDTreeFind<CR>
-    "nmap <leader>nt :NERDTreeFind<CR>
-
-    let NERDTreeShowBookmarks=1
-    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    let NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeShowHidden=1
-    let NERDTreeKeepTreeInNewTab=1
-
-  " Tabularize
-     if exists(":Tabularize")
-       nmap <Leader>a= :Tabularize /=<CR>
-       vmap <Leader>a= :Tabularize /=<CR>
-       nmap <Leader>a: :Tabularize /:<CR>
-       vmap <Leader>a: :Tabularize /:<CR>
-       nmap <Leader>a:: :Tabularize /:\zs<CR>
-       vmap <Leader>a:: :Tabularize /:\zs<CR>
-       nmap <Leader>a, :Tabularize /,<CR>
-       vmap <Leader>a, :Tabularize /,<CR>
-       nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-       vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-
-       " The following function automatically aligns when typing a
-       " supported character
-       inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
-       function! s:align()
-         let p = '^\s*|\s.*\s|\s*$'
-         if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-           let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-           let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-           Tabularize/|/l1
-           normal! 0
-           call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-         endif
-       endfunction
-     endif
-
-   " Session List
-     set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-     nmap <leader>sl :SessionList<CR>
-     nmap <leader>ss :SessionSave<CR>
-
-   " JSON
-     nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-
-   " PyMode
-     let g:pymode_lint_checker = "pyflakes"
-
-   " ctrlp
-     let g:ctrlp_map = "<leader>f"
-     map <silent> <leader>b :CtrlPBuffer<CR>
-     let g:ctrlp_working_path_mode = 2
-     let g:ctrlp_max_height = 20
-     let g:ctrlp_custom_ignore = {
-       \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-       \ 'file': '\.exe$\|\.so$\|\.dll$' }
-
-   " TagBar
-     nnoremap <silent> <leader>tt :TagbarToggle<CR>
-
-   " Fugitive
-     nnoremap <silent> <leader>gs :Gstatus<CR>
-     nnoremap <silent> <leader>gd :Gdiff<CR>
-     nnoremap <silent> <leader>gc :Gcommit<CR>
-     nnoremap <silent> <leader>gb :Gblame<CR>
-     nnoremap <silent> <leader>gl :Glog<CR>
-     nnoremap <silent> <leader>gp :Git push<CR>
-
-   " neocomplcache
-     let g:neocomplcache_enable_at_startup = 1
-     let g:neocomplcache_enable_camel_case_completion = 1
-     let g:neocomplcache_enable_smart_case = 1
-     let g:neocomplcache_enable_underbar_completion = 1
-     let g:neocomplcache_min_syntax_length = 3
-     let g:neocomplcache_enable_auto_delimiter = 1
-
-     " AutoComplPop like behavior.
-     let g:neocomplcache_enable_auto_select = 0
-
-     " SuperTab like snippets behavior.
-     imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-     " Plugin key-mappings.
-     imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-     smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-     inoremap <expr><C-g>     neocomplcache#undo_completion()
-     inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-     " Stop the automatically popup - invoke manually with C-x,C-u
-     let g:neocomplcache_disable_auto_complete = 1
-
-     " <CR>: close popup
-     " <s-CR>: close popup and save indent.
-     inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-     inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
-     " <TAB>: completion.
-     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-     " <C-h>, <BS>: close popup and delete backword char.
-     inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-     inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-     inoremap <expr><C-y>  neocomplcache#close_popup()
-     inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-     " Enable omni completion.
-     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-     " Enable heavy omni completion.
-     if !exists('g:neocomplcache_omni_patterns')
-       let g:neocomplcache_omni_patterns = {}
-     endif
-     let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-     "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-     let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-     let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-     let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
-     " For snippet_complete marker.
-     if has('conceal')
-       set conceallevel=2 concealcursor=i
-     endif
-
-   " ZoomWin
-     map <silent> <Leader>z :ZoomWin<CR>
-
-" GUI Settings
+" GUI Settings {
   " GVIM (here instead of .gvimrc)
   if has('gui_running')
     set guioptions-=T   ""
@@ -446,8 +457,9 @@
     set guifont=menlo\ bold:h12
     set transparency=0 " don't ever have a transparent window
   endif
+" }
 
-" Functions
+" Functions {
   function! NERDTreeInitAsNeeded()
     redir => bufoutput
     buffers!
@@ -459,16 +471,18 @@
       wincmd l
     endif
   endfunction
+" }
 
-" Auto-load Vimrcs
+" Auto-load Vimrcs {
   autocmd! BufWritePost vimrc source %
   autocmd! BufWritePost .vimrc source %
   autocmd! BufWritePost .vimrc.local source %
   autocmd! BufWritePost gvimrc source %
   autocmd! BufWritePost .gvimrc source %
   autocmd! BufWritePost .gvimrc.local source %
+" }
 
-" Local Configuration
+" Local Configuration {
   if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
   endif
@@ -478,3 +492,4 @@
       source ~/.gvimrc.local
     endif
   endif
+" }
