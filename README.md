@@ -49,6 +49,13 @@ The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing i
 - for servers: `yum install vim curl git ack ctags`
 - for desktops: `yum install vim-gnome curl git ack ctags`
 
+### in order to use JavaScript syntax checking via the syntastic plugin:
+
+#### Mac OS X
+- install `nodejs` using either MacPorts, Homebrew, or Fink
+- install `npm`, or node package manager manually. the instructions are at the [github page for npm](https://github.com/isaacs/npm).
+- using `npm`, install jslint globally:
+`sudo npm install -g jslint`
 
 ### one-liner install script
 - `curl https://raw.github.com/kelsey/vimulacrum/master/install -l -o - | bash`
@@ -115,6 +122,7 @@ There's a lot more, check it out at `:help surround` "})}</q></q>"
 - To use, `:Ack`
 
 ### [Syntastic]
+- this does syntax checking
 
 ### [Fugitive]
 - the most useful command is: `:Gblame`
