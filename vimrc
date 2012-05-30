@@ -93,9 +93,6 @@
   Bundle 'matchit.zip'
   let b:match_ignorecase = 1
 
-  "Bundle 'Lokaltog/vim-powerline'
-  "Bundle 'godlygeek/csapprox'
-
   if executable('ack')
     Bundle 'mileszs/ack.vim'
   endif
@@ -114,12 +111,12 @@
   Bundle 'scrooloose/syntastic'
   Bundle 'tpope/vim-fugitive'
   " Fugitive {
-   nnoremap <silent> <leader>gs :Gstatus<CR>
-   nnoremap <silent> <leader>gd :Gdiff<CR>
-   nnoremap <silent> <leader>gc :Gcommit<CR>
-   nnoremap <silent> <leader>gb :Gblame<CR>
-   nnoremap <silent> <leader>gl :Glog<CR>
-   nnoremap <silent> <leader>gp :Git push<CR>
+    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gd :Gdiff<CR>
+    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gb :Gblame<CR>
+    nnoremap <silent> <leader>gl :Glog<CR>
+    nnoremap <silent> <leader>gp :Git push<CR>
   " }
   Bundle 'scrooloose/nerdcommenter'
 
@@ -162,7 +159,7 @@
     set tags=./tags;/,~/.vimtags
   " }
   " TagBar {
-   nnoremap <silent> <leader>tt :TagbarToggle<CR>
+    nnoremap <silent> <leader>tt :TagbarToggle<CR>
   " }
 
   Bundle 'Shougo/neocomplcache'
@@ -311,34 +308,25 @@
   set tabpagemax=15               " only show 15 tabs
   set showmode                    " display the current mode
 
-  " Linux GNOME Terminal specific settings
+  " Linux GNOME Terminal specific settings {
   if $TERM == "xterm"
     "for 256 color support in terminal vim
     set t_Co=256
   endif
+  " }
 
-  " Mac OS X Terminal specific settings
+  " Mac OS X Terminal specific settings {
   if $TERM == "xterm-color"
     colorscheme neon
   endif
+  " }
 
   if has('cmdline_info')
     set ruler                   " show the ruler
-    "set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-    "set showcmd                 " show partial commands in status line and
-                                " selected characters/lines in visual mode
   endif
 
   if has('statusline')
     set laststatus=2
-
-    " Broken down into easily includeable segments
-    " note that the default statusline: %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-    "set statusline=%<%f                      " Filename
-    "set statusline+=\ %w%h%m%r                 " Options
-    "set statusline+=%=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-    "set statusline+=%=%{&ff}/%{&enc}/%Y            " filetype
-    "set statusline+=%=%-11.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   endif
 
   set backspace=indent,eol,start       " backspace for dummies
@@ -357,10 +345,10 @@
 " Formatting {
   set autoindent                        " indent at the same level of the previous line
   set cinkeys=0{,0},:,0#,!<Tab>,!^F     " indent current line with these keystrokes
-  set shiftwidth=2                      " use indents of 4 spaces
+  set shiftwidth=2                      " use indents of 2 spaces
   set expandtab                         " tabs are spaces, not tabs
   autocmd FileType make set noexpandtab " ...unless you're creating a make file
-  set tabstop=2                         " an indentation every four columns
+  set tabstop=2                         " an indentation every two columns
   set softtabstop=2                     " let backspace delete indent
   set pastetoggle=<F12>                 " pastetoggle (sane indentation on pastes)
   "set comments=sl:/*,mb:*,elx:*/       " auto format comment blocks
@@ -399,10 +387,10 @@
   " Some helpers to edit mode
   " http://vimcasts.org/e/14
   "cnoremap %% <C-R>=expand('%:h').'/'<cr>
-  map <leader>ew :e %%
-  map <leader>es :sp %%
-  map <leader>ev :vsp %%
-  map <leader>et :tabe %%
+  "map <leader>ew :e %%
+  "map <leader>es :sp %%
+  "map <leader>ev :vsp %%
+  "map <leader>et :tabe %%
 " }
 
 " Plugins {
@@ -435,6 +423,7 @@
 " GUI Settings {
   " GVIM (here instead of .gvimrc)
   if has('gui_running')
+    color molokai
     set guioptions-=T   ""
     set guioptions-=r   ""
     set guioptions-=R   ""
@@ -443,14 +432,11 @@
     set guioptions-=h   " etc.
     set guioptions-=b   ""
     set guioptions-=m   ""
-
-    colo molokai
+    " Mac OS X MacVim specific settings
     if has('gui_macvim')
       set guifont=menlo\ bold:h12
       set transparency=0 " don't ever have a transparent window
     endif
-  else
-    "set term=builtin_ansi       " Make arrow and other keys work
   endif
 " }
 
