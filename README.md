@@ -52,7 +52,7 @@ Latin *(s)imulācrum* likeness, image, equivalent to *simulā* ( *re* ) to <u>si
 ## How to install
 
 ### linux requirements
- - vim: to access the full features, we recommend vim version 7.3
+ - vim: to access the full set features, we recommend vim version 7.3
  - git
  - curl
  - ack
@@ -126,20 +126,25 @@ For instance, if the cursor was inside `"foo bar"`, you could type
 There's a lot more, check it out at `:help surround` "})}</q></q>"
 
 ### [AutoClose]
+Automatically places closing symbols such as brackets and paretheses.
 
 ### [vim-markdown-preview]
 - To preview, `:Mw`
+- Note - Mac only
 
 ### [ZoomWin]
+Zoom in on a particular viewport
 - To invoke, `<leader> z`
 
 ### [Matchit]
+Extends '%' functionality.
 
 ### [Ack.vim]
 - To use, `:Ack`
 
 ### [Syntastic]
 - this does syntax checking
+- if you see the red arrors, do `:Errors` to see the syntax errors
 
 ### [Fugitive]
 - the most useful command is: `:Gblame`
@@ -147,12 +152,12 @@ There's a lot more, check it out at `:help surround` "})}</q></q>"
 ### [NERDCommenter]
 - move the cursor to the line you want to comment out, then use `<leader> cc`
 
-### [Tabularize]
+### [Tabular]
+- this [vimcast]{http://vimcasts.org/episodes/aligning-text-with-tabular-vim/} explains it best: 
+- To align the via the :s in each line, select the lines and do `<leader> a:`
 
 ### [Tagbar]
-
-### [neocomplcache]
-- to manually invoke: `C-x, C-u`
+- to toggle the sidebar: `<leader> tt`
 
 
 [Git]:http://git-scm.com
@@ -174,7 +179,7 @@ There's a lot more, check it out at `:help surround` "})}</q></q>"
 [Syntastic]:http://github.com/scrooloose/syntastic
 [vim-easymotion]:http://github.com/Lokaltog/vim-easymotion
 [Matchit]:http://www.vim.org/scripts/script.php?script_id=39
-[Tabularize]:http://github.com/godlygeek/tabular
+[Tabular]:http://github.com/godlygeek/tabular
 [EasyMotion]:https://github.com/Lokaltog/vim-easymotion
 
 [spf13-vim-img]:http://i.imgur.com/UKToY.png
