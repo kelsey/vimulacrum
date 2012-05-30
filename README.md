@@ -21,7 +21,7 @@ Latin *(s)imulācrum* likeness, image, equivalent to *simulā* ( *re* ) to <u>si
 
 > *The vimulacrum is true.*
 
->> &mdash; Richard Stallman
+> &mdash; Richard Stallman
 
 ## Vim philosophy
 
