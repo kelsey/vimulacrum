@@ -311,10 +311,15 @@
   set tabpagemax=15               " only show 15 tabs
   set showmode                    " display the current mode
 
-  " make sure Linux terminal color support works
+  " Linux GNOME Terminal specific settings
   if $TERM == "xterm"
     "for 256 color support in terminal vim
     set t_Co=256
+  endif
+
+  " Mac OS X Terminal specific settings
+  if $TERM == "xterm-color"
+    colorscheme neon
   endif
 
   if has('cmdline_info')
