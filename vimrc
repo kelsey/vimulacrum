@@ -403,9 +403,6 @@
   map <leader>es :sp %%
   map <leader>ev :vsp %%
   map <leader>et :tabe %%
-
-  " Adjust viewports to the same size
-  map <Leader>= <C-w>=
 " }
 
 " Plugins {
