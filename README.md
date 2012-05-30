@@ -1,10 +1,27 @@
 vimulacrum
 ==========
-[vim-yuh-ley-kruhm]
 
-/ˌvɪmyəˈleɪkrəm/
+### The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing it exists!
+&nbsp;
 
-The ult-Vim-ate Vim setup! It's so good that you'll have a hard time believing it exists!
+**vim·u·la·crum** [vim-y*uh*-**ley**-kr*uh*m] /ˌvɪmyəˈleɪkrəm/
+
+***noun, plural*** **vim·u·la·cra** [-kr*uh*] /-krə/
+
+1. a slight, unreal, or superficial likeness or semblance.
+
+2. an effigy, image, or representation: *a vimulacrum of Vim.*
+
+**Origin:**
+
+2012; Unix-speak *v(im)* a highly configurable text editor built to enable efficient text editing +
+Latin *(s)imulācrum* likeness, image, equivalent to *simulā* ( *re* ) to <u>simulate</u> + -*crum* instrumental suffix
+
+> *The vimulacrum is never what hides the truth - it is truth that hides the fact that there is none.*
+
+> *The vimulacrum is true.*
+
+>> &mdash; Richard Stallman
 
 ## Vim philosophy
 
@@ -129,6 +146,7 @@ There's a lot more, check it out at `:help surround` "})}</q></q>"
 
 ### [NERDCommenter]
 - move the cursor to the line you want to comment out, then use `<leader> cc`
+
 ### [Tabularize]
 
 ### [Tagbar]
