@@ -294,6 +294,8 @@
   "set comments=sl:/*,mb:*,elx:*/       " auto format comment blocks
   " Remove trailing whitespaces and ^M chars
   autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+  " set auto add line breaks for text files
+  autocmd FileType text set textwidth=80
 " }
 
 " Key Bindings {
