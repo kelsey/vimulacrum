@@ -86,6 +86,7 @@
      \ 'file': '\.exe$\|\.so$\|\.dll$\|\.jpg$\|\.jpeg$\|\.png$\|\.pdf$' }
   " }
   Bundle 'nelstrom/vim-markdown-preview'
+  Bundle 'tpope/vim-markdown'
   Bundle 'ZoomWin'
   " ZoomWin {
    map <silent> <Leader>z :ZoomWin<CR>
