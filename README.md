@@ -132,6 +132,10 @@ Automatically places closing symbols such as brackets and paretheses.
 - To preview, `:Mw`
 - Note - Mac only
 
+### [vim-markdown]
+- this fixes the strange underscore emphasis issue for syntax highlighting
+- this allows vim to autodetect .md files as markdown
+
 ### [ZoomWin]
 Zoom in on a particular viewport
 - To invoke, `<leader> z`
@@ -194,4 +198,5 @@ Extends '%' functionality.
 [AutoClose]:https://github.com/Townk/vim-autoclose
 [ZoomWin]:http://www.vim.org/scripts/script.php?script_id=508
 [vim-markdown-preview]:https://github.com/nelstrom/vim-markdown-preview
+[vim-markdown]:https://github.com/tpope/vim-markdown
 [Ack.vim]:https://github.com/mileszs/ack.vimc
