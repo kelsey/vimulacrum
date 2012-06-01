@@ -83,7 +83,7 @@
    let g:ctrlp_max_height = 20
    let g:ctrlp_custom_ignore = {
      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-     \ 'file': '\.exe$\|\.so$\|\.dll$' }
+     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.jpg$\|\.jpeg$\|\.png$\|\.pdf$' }
   " }
   Bundle 'nelstrom/vim-markdown-preview'
   Bundle 'ZoomWin'
