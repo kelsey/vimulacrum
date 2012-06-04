@@ -87,6 +87,7 @@
   " }
   Bundle 'nelstrom/vim-markdown-preview'
   Bundle 'tpope/vim-markdown'
+  Bundle 'endwise.vim'
   Bundle 'ZoomWin'
   " ZoomWin {
    map <silent> <Leader>z :ZoomWin<CR>
@@ -351,7 +352,7 @@
 
     " some convenient mappings
     inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-    inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+    "inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
     inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
     inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
     inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
