@@ -231,13 +231,11 @@
   set nrformats=alpha
 
   "set mouse=a                 " automatically enable mouse usage
-  " always switch to the current file directory.
-  autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
   set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
   set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
   set hidden                      " allow buffer switching without saving
-  set fillchars+=stl:\ ,stlnc:\ 
+  set fillchars+=stl:\ ,stlnc:\
 " }
 
 " Vim UI {
