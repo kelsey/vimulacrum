@@ -74,7 +74,8 @@
   " }
 
   Bundle 'tpope/vim-surround'
-  Bundle 'AutoClose'
+  ""Bundle 'AutoClose'
+  Bundle 'Raimondi/delimitMate'
   Bundle 'kien/ctrlp.vim'
   " ctrlp {
    let g:ctrlp_map = "<leader>f"
