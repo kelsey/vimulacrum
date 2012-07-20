@@ -235,7 +235,6 @@
   set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
   set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
   set hidden                      " allow buffer switching without saving
-  set fillchars+=stl:\ ,stlnc:\ 
 " }
 
 " Vim UI {
