@@ -77,6 +77,7 @@
   ""Bundle 'AutoClose'
   Bundle 'Raimondi/delimitMate'
   let delimitMate_quotes = "\" '"
+  let delimitMate_excluded_ft = "txt"
 
   Bundle 'kien/ctrlp.vim'
   " ctrlp {
