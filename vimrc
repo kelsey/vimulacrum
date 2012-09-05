@@ -255,7 +255,7 @@
   " }
 
   " Mac OS X Terminal specific settings {
-  if $TERM == "xterm-color"
+  if $TERM == "xterm-color" || $TERM == "xterm-256color"
     colorscheme neon
   endif
   " }
