@@ -74,7 +74,11 @@
   " }
 
   Bundle 'tpope/vim-surround'
-  Bundle 'AutoClose'
+  ""Bundle 'AutoClose'
+  Bundle 'Raimondi/delimitMate'
+  let delimitMate_quotes = "\" '"
+  let delimitMate_excluded_ft = "txt"
+
   Bundle 'kien/ctrlp.vim'
   " ctrlp {
    let g:ctrlp_working_path_mode = 'r'
@@ -256,7 +260,7 @@
   " }
 
   " Mac OS X Terminal specific settings {
-  if $TERM == "xterm-color"
+  if $TERM == "xterm-color" || $TERM == "xterm-256color"
     colorscheme neon
   endif
   " }
@@ -296,6 +300,8 @@
   autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
   " set auto add line breaks for text files
   autocmd FileType text set textwidth=80
+  " set .md files to use ft=markdown
+  au BufNewFile,BufRead *.md set filetype=markdown
 " }
 
 " Key Bindings {
