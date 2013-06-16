@@ -77,6 +77,7 @@
   Bundle 'AutoClose'
   Bundle 'kien/ctrlp.vim'
   " ctrlp {
+   let g:ctrlp_working_path_mode = 'r'
    let g:ctrlp_map = "<leader>f"
    map <silent> <leader>b :CtrlPBuffer<CR>
    let g:ctrlp_working_path_mode = 2
